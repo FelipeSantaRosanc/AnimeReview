@@ -9,18 +9,24 @@ namespace AnimeReview.Entities
 
         [Required]
         [MaxLength(200)]
-        public String Title { get; set; }
+        public string Title { get; set; } = string.Empty;
 
+        [MaxLength(2000)]
         public string? Synopsis { get; set; }
 
-
+        [MaxLength(500)]
         public string? CoverImage { get; set; }
 
-        public int ReleaseYear { get; set; }
+        public int? ReleaseYear { get; set; }
 
-        public ICollection<Review>? Reviews { get; set; }
+        // Auditoria
+        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime? UpdatedAt { get; set; }
+        public bool IsDeleted { get; set; } = false;
 
-        public ICollection<AnimeGenre>? AnimeGenres { get; set; }
+        // Relacionamentos
+        public ICollection<Review> Reviews { get; set; } = new List<Review>();
+        public ICollection<AnimeGenre> AnimeGenres { get; set; } = new List<AnimeGenre>();
 
     }
 }

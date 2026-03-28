@@ -1,12 +1,11 @@
-﻿using AnimeReview.Entities;
+﻿using AnimeReview.DTOs.User;
+using AnimeReview.Shared;
 
-namespace AnimeReview.Services.Interfaces
+namespace AnimeReview.Services.Interfaces;
+
+public interface IUserService
 {
-    public interface IUserService
-    {
-
-        Task<ApplicationUser?> GetUserAsync(string id);
-
-        Task UpdateUserAsync(ApplicationUser user);
-    }
+    Task<Result<UserProfileDto>> GetProfileAsync(string userId);
+    Task<Result<UserProfileDto>> UpdateProfileAsync(string userId, UpdateProfileDto dto);
+    Task<Result> ChangePasswordAsync(string userId, ChangePasswordDto dto);
 }

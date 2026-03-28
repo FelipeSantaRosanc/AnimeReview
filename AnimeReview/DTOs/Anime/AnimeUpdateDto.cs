@@ -2,7 +2,7 @@
 
 namespace AnimeReview.DTOs.Anime
 {
-    public class AnimeCreateDto
+    public class AnimeUpdateDto
     {
         [Required(ErrorMessage = "Title is required")]
         [MaxLength(200, ErrorMessage = "Title must be less than 200 characters")]
@@ -18,7 +18,6 @@ namespace AnimeReview.DTOs.Anime
         [MaxLength(500)]
         public string? CoverImage { get; set; }
 
-        // IDs dos gêneros para vincular
         public List<int> GenreIds { get; set; } = new();
 
 

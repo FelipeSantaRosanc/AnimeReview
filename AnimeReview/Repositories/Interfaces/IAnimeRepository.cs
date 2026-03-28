@@ -1,26 +1,21 @@
-﻿using AnimeReview.Entities;
+﻿using AnimeReview.DTOs.Anime;
+using AnimeReview.Entities;
+using AnimeReview.Shared;
 
 namespace AnimeReview.Repositories.Interfaces
 {
     public interface IAnimeRepository
     {
 
-        //listar todos os animes
-        Task<IEnumerable<Anime>> GetAllAsync();
-
-        //listar um anime por id
+        Task<PagedResult<Anime>> GetAllAsync(PaginationParams pagination, AnimeFilterDto? filter = null);
         Task<Anime?> GetByIdAsync(int id);
-
-        // adicionar um anime
+        Task<Anime?> GetByIdWithDetailsAsync(int id);
+        Task<bool> ExistsByTitleAsync(string title);
         Task AddAsync(Anime anime);
-
-        // atualizar um anime
         Task UpdateAsync(Anime anime);
-
-        // deletar um anime
-        Task DeleteAsync(int id);
-
-        Task<bool> SaveChangesAsync();
+        Task SoftDeleteAsync(int id);
+        Task<bool> ExistsAsync(int id);
+        Task UpdateAverageRatingAsync(int animeId);
 
     }
 }

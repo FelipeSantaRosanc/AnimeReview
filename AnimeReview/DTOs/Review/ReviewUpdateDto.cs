@@ -2,11 +2,8 @@
 
 namespace AnimeReview.DTOs.Review
 {
-    public class ReviewCreateDto
+    public class ReviewUpdateDto
     {
-        [Required(ErrorMessage = "AnimeId is required")]
-        public int AnimeId { get; set; }
-
         [Required(ErrorMessage = "Score is required")]
         [Range(1, 10, ErrorMessage = "Score must be between 1 and 10")]
         public int Score { get; set; }

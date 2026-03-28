@@ -7,5 +7,7 @@ namespace AnimeReview.Repositories.Interfaces
     public interface IGenreRepository
     {
         Task<IEnumerable<Genre>> GetAllAsync();
+        Task<List<Genre>> GetByIdsAsync(List<int> ids);
+        Task<Genre?> GetByIdAsync(int id);
     }
 }
